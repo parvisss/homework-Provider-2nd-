@@ -11,7 +11,7 @@ class ProductsFirebaseServices {
   }
 
   Future<void> addProduct(double price, String title, File file) async {
-    final imageUrl = _firebaseStorageService.uploadFile(title, file);
+    final imageUrl = await _firebaseStorageService.uploadFile(title, file);
     await _firebaseFirestore.add(
       {
         "about": "about this product",

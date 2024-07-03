@@ -113,9 +113,11 @@ class _FloatingButtonState extends State<FloatingButton> {
                             onPressed: () async {
                               ProgresIndicatior.showProgressDialog(context);
                               await productcController.addNewProduct(
+                                
                                 double.parse(priceController.text),
                                 titleController.text,
                                 imageFile!,
+                                
                               );
                               // ignore: use_build_context_synchronously
                               if (context.mounted) {
