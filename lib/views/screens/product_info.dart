@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:online_shop/controllers/productc_controller.dart';
 import 'package:online_shop/views/widgets/floating_button.dart';
 import 'package:online_shop/views/widgets/model_bottom_sheet.dart';
-import 'package:provider/provider.dart';
 
 class ProductInfo extends StatefulWidget {
-  const ProductInfo({super.key, required this.id});
+  const ProductInfo({super.key, required this.id, required this.products});
   final int id;
+  final products;
 
   @override
   State<ProductInfo> createState() => _ProductInfoState();
@@ -17,9 +16,7 @@ class ProductInfo extends StatefulWidget {
 class _ProductInfoState extends State<ProductInfo> {
   @override
   Widget build(BuildContext context) {
-    final productcController = Provider.of<ProductcController>(context);
-    final product = productcController.list[widget.id];
-    final int ind = widget.id;
+    final product = widget.products[widget.id];
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -43,25 +40,25 @@ class _ProductInfoState extends State<ProductInfo> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Flexible(
-                    child: Image.network(product.image),
+                    child: Image.network(product["image"]),
                   ),
                   Flexible(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          product.category,
+                          product['category'],
                           style: const TextStyle(fontSize: 18),
                         ),
                         Text(
-                          product.title,
+                          product['title'],
                           textDirection: TextDirection.rtl,
                           style: const TextStyle(fontSize: 25),
                         ),
                         const Gap(30),
                         const Text("Price"),
                         Text(
-                          "\$${product.price}",
+                          "\$${product['price']}",
                           style: const TextStyle(
                             color: Color.fromARGB(255, 151, 215, 153),
                             fontSize: 20,
@@ -124,12 +121,12 @@ class _ProductInfoState extends State<ProductInfo> {
                   ),
                   const Gap(20),
                   Text(
-                    product.aboutTitle,
+                    product['aboutTitle'],
                     style: const TextStyle(fontSize: 22),
                   ),
                   const Gap(10),
                   Text(
-                    product.about,
+                    product['about'],
                   ),
                 ],
               ),
@@ -151,6 +148,7 @@ class _ProductInfoState extends State<ProductInfo> {
                   builder: (ctx) {
                     return ModelBottomSheet(
                       id: widget.id,
+                      products: widget.products,
                     );
                   },
                 );
@@ -158,7 +156,7 @@ class _ProductInfoState extends State<ProductInfo> {
             ),
           ),
           const Gap(20),
-          const FloatingButton()
+           FloatingButton()
         ],
       ),
     );

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:online_shop/views/screens/special_offers.dart';
 
 class CardsToSlide extends StatelessWidget {
-  const CardsToSlide({super.key});
-
+  const CardsToSlide({super.key,required this.products});
+  final List products;
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
@@ -32,7 +32,7 @@ class CardsToSlide extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (Ctx) => SpecialOffers(),
+                    builder: (Ctx) => SpecialOffers(products: products,),
                   ),
                 );
               },

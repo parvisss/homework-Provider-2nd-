@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:online_shop/controllers/productc_controller.dart';
 import 'package:online_shop/views/screens/product_info.dart';
-import 'package:provider/provider.dart';
 
 class CardBuilder extends StatelessWidget {
-  const CardBuilder({super.key});
+  const CardBuilder({super.key, required this.products});
+  final List products;
 
   @override
   Widget build(BuildContext context) {
-    final productcController = Provider.of<ProductcController>(context);
     return SliverGrid.builder(
-      itemCount: productcController.list.length,
+      itemCount: products.length,
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
         maxCrossAxisExtent: 300,
         mainAxisExtent: 250,
@@ -19,7 +17,6 @@ class CardBuilder extends StatelessWidget {
         mainAxisSpacing: 50,
       ),
       itemBuilder: (ctx, index) {
-        final product = productcController.list[index];
         return Stack(
           clipBehavior: Clip.none,
           children: [
@@ -32,21 +29,21 @@ class CardBuilder extends StatelessWidget {
                     children: [
                       const SizedBox(height: 120),
                       Text(
-                        product.title,
+                        products[index]["title"],
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(fontSize: 16),
                       ),
                       const Gap(5),
-                      Text(product.category),
+                      Text(products[index]['category']),
                       const Gap(5),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("\$${product.price}"),
+                          Text("\$${products[index]['price']}"),
                           IconButton(
                             onPressed: () {},
                             icon: Icon(
-                              product.isFav
+                              products[index]['isFav']
                                   ? Icons.favorite
                                   : Icons.favorite_border,
                             ),
@@ -63,8 +60,9 @@ class CardBuilder extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (ctx) => ProductInfo(
                       id: index,
+                      products: products,
                     ),
-                  ),  
+                  ),
                 );
               },
             ),
@@ -75,7 +73,7 @@ class CardBuilder extends StatelessWidget {
               child: SizedBox(
                 height: 140,
                 child: Image.network(
-                  product.image,
+                  products[index]['image'],
                 ),
               ),
             ),

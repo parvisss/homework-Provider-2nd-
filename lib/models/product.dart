@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Product extends ChangeNotifier {
+  final String id;
   String title;
   String category;
   double price;
@@ -9,6 +11,7 @@ class Product extends ChangeNotifier {
   String about;
   String aboutTitle;
   Product({
+    required this.id,
     required this.title,
     required this.category,
     required this.price,
@@ -17,4 +20,16 @@ class Product extends ChangeNotifier {
     required this.about,
     required this.aboutTitle,
   });
+  factory Product.fromMap(QueryDocumentSnapshot map) {
+    return Product(
+      id: map.id,
+      title: map['title'],
+      category: map['category'],
+      price: map['price'].toDouble(),
+      image: map['image'],
+      isFav: map['isFav'],
+      about: map['about'],
+      aboutTitle: map['aboutTitle'],
+    );
+  }
 }

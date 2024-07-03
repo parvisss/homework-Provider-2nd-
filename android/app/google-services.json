@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "188631435903",
+    "project_id": "dars66-7d392",
+    "storage_bucket": "dars66-7d392.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:188631435903:android:114e22feb7e1944d3d0d4a",
+        "android_client_info": {
+          "package_name": "com.example.online_shop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4WiDZl1qzTE4Z_DUxNu-0xZKXotKUEmY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

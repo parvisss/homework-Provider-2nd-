@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:online_shop/controllers/card_controller.dart';
-import 'package:online_shop/controllers/productc_controller.dart';
 import 'package:online_shop/views/screens/buy.dart';
-import 'package:provider/provider.dart';
 
 class ModelBottomSheet extends StatelessWidget {
-  const ModelBottomSheet({super.key, required this.id});
+  const ModelBottomSheet({super.key, required this.id, required this.products});
   final int id;
+  final List products;
 
   @override
   Widget build(BuildContext context) {
-    final cardController = Provider.of<CardController>(context);
-    final productcController = Provider.of<ProductcController>(context);
+    final product = products[id];
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
@@ -38,17 +35,15 @@ class ModelBottomSheet extends StatelessWidget {
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text("${cardController.cart.length} items"),
+                          child: Text("${products.length} items"),
                         ),
                       )
                     ],
                   ),
                   Flexible(
                     child: ListView.builder(
-                      itemCount: cardController.cart.length,
+                      itemCount: products.length,
                       itemBuilder: (ctx, index) {
-                        final card = cardController.cart[id];
-
                         return Card(
                           clipBehavior: Clip.hardEdge,
                           child: Row(
@@ -56,8 +51,7 @@ class ModelBottomSheet extends StatelessWidget {
                             children: [
                               Flexible(
                                 flex: 1,
-                                child: Image.network(
-                                    productcController.list[id].image),
+                                child: Image.network(product['image']),
                               ),
                               const Gap(10),
                               Flexible(
@@ -65,27 +59,20 @@ class ModelBottomSheet extends StatelessWidget {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Text(productcController.list[id].title),
+                                    Text(product['title']),
                                     Row(
                                       children: [
                                         IconButton(
                                           onPressed: () {
-                                            cardController.removeFromCard(
-                                                id, id);
+                                            ;
                                           },
                                           icon: const Icon(Icons.remove),
                                           color: Colors.grey,
                                         ),
                                         const Gap(10),
-                                        Text(
-                                          cardController.cart[id].amount
-                                              .toString(),
-                                        ),
                                         const Gap(10),
                                         IconButton(
-                                          onPressed: () {
-                                            cardController.addToCard(id, id);
-                                          },
+                                          onPressed: () {},
                                           icon: const Icon(Icons.add),
                                           color: Colors.grey,
                                         ),
@@ -95,14 +82,14 @@ class ModelBottomSheet extends StatelessWidget {
                                           style: TextStyle(color: Colors.grey),
                                         ),
                                         const Gap(15),
-                                        Text(
-                                          "\$${cardController.cart[id].totalPrice}",
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            color: Color.fromARGB(
-                                                255, 151, 215, 153),
-                                          ),
-                                        ),
+                                        // Text(
+                                        //   // "\$${products[id].}",
+                                        //   style: const TextStyle(
+                                        //     fontSize: 14,
+                                        //     color: Color.fromARGB(
+                                        //         255, 151, 215, 153),
+                                        //   ),
+                                        // ),
                                       ],
                                     ),
                                     const Gap(10),
@@ -123,29 +110,26 @@ class ModelBottomSheet extends StatelessWidget {
                     ),
                   ),
                   const Gap(20),
-                  Flexible(
-                    flex: 1,
-                    child: FilledButton(
-                      style: ButtonStyle(
-                        backgroundColor: WidgetStateProperty.all(
-                          const Color.fromARGB(255, 151, 215, 153),
-                        ),
+                  FilledButton(
+                    style: ButtonStyle(
+                      backgroundColor: WidgetStateProperty.all(
+                        const Color.fromARGB(255, 151, 215, 153),
                       ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (ctx) => Buy(
-                              id: id,
-                            ),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (ctx) => Buy(
+                            id: id,
                           ),
-                        );
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 26.w, vertical: 15),
-                        child: const Text("Checkout Chart"),
-                      ),
+                        ),
+                      );
+                    },
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 26.w, vertical: 15),
+                      child: const Text("Checkout Chart"),
                     ),
                   )
                 ],

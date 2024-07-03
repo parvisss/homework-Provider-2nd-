@@ -4,8 +4,8 @@ import 'package:online_shop/views/widgets/card_builder.dart';
 import 'package:online_shop/views/widgets/floating_button.dart';
 
 class SpecialOffers extends StatelessWidget {
-  const SpecialOffers({super.key});
-
+  const SpecialOffers({super.key,required this.products});
+  final List products;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,10 +39,10 @@ class SpecialOffers extends StatelessWidget {
           const SliverToBoxAdapter(
             child: Gap(40),
           ),
-          const CardBuilder(),
+           CardBuilder(products: products,),
         ],
       ),
-      floatingActionButton: const FloatingButton(),
+      floatingActionButton:  FloatingButton(),
     );
   }
 }
