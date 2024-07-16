@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:online_shop/views/widgets/card_builder.dart';
-import 'package:online_shop/views/widgets/floating_button.dart';
+import 'package:online_shop/ui/widgets/card_builder.dart';
+import 'package:online_shop/ui/widgets/floating_button.dart';
 
 class SpecialOffers extends StatelessWidget {
   const SpecialOffers({super.key,required this.products});

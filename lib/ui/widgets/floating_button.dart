@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:online_shop/controllers/productc_controller.dart';
-import 'package:online_shop/views/widgets/progres_indicatior.dart';
+import 'package:online_shop/ui/widgets/progres_indicatior.dart';
 
 class FloatingButton extends StatefulWidget {
   const FloatingButton({super.key});
@@ -144,3 +144,9 @@ class _FloatingButtonState extends State<FloatingButton> {
     );
   }
 }
+
+
+
+
+
+

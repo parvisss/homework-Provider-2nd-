@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:online_shop/controllers/card_controller.dart';
-import 'package:online_shop/views/screens/home_screen.dart';
+import 'package:online_shop/ui/screens/home_screen.dart';
 import 'package:provider/provider.dart';
 
 class PaymentNotifier extends StatelessWidget {

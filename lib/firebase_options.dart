@@ -41,29 +41,31 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAjyTe0Gm2jQcSoyU6uTzfr2G392UEm0xA',
-    appId: '1:188631435903:web:0ed516f11ae63ab03d0d4a',
-    messagingSenderId: '188631435903',
-    projectId: 'dars66-7d392',
-    authDomain: 'dars66-7d392.firebaseapp.com',
-    storageBucket: 'dars66-7d392.appspot.com',
-    measurementId: 'G-3J75EG8EGG',
+    apiKey: 'AIzaSyCO5zjLCTZoAxHoTUlp6l1pjHvIZiPkm5I',
+    appId: '1:788959584947:web:f2ded76cf5c0c7890f06c6',
+    messagingSenderId: '788959584947',
+    projectId: 'online-shop-54b33',
+    authDomain: 'online-shop-54b33.firebaseapp.com',
+    databaseURL: 'https://online-shop-54b33-default-rtdb.firebaseio.com',
+    storageBucket: 'online-shop-54b33.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyB4WiDZl1qzTE4Z_DUxNu-0xZKXotKUEmY',
-    appId: '1:188631435903:android:114e22feb7e1944d3d0d4a',
-    messagingSenderId: '188631435903',
-    projectId: 'dars66-7d392',
-    storageBucket: 'dars66-7d392.appspot.com',
+    apiKey: 'AIzaSyBG3rNoYDU9Jph-UJ12BYpbf1wiwNVAiZ0',
+    appId: '1:788959584947:android:a1c4980b601130650f06c6',
+    messagingSenderId: '788959584947',
+    projectId: 'online-shop-54b33',
+    databaseURL: 'https://online-shop-54b33-default-rtdb.firebaseio.com',
+    storageBucket: 'online-shop-54b33.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAPAGbr1WL311pm33m3dzGZrTSTHLCcwVg',
-    appId: '1:188631435903:ios:dd3d3632a5880ef33d0d4a',
-    messagingSenderId: '188631435903',
-    projectId: 'dars66-7d392',
-    storageBucket: 'dars66-7d392.appspot.com',
+    apiKey: 'AIzaSyBDf-wvvtAqZPlq6kVjYcha601XhaS2zFs',
+    appId: '1:788959584947:ios:f41a3d9f77a7714c0f06c6',
+    messagingSenderId: '788959584947',
+    projectId: 'online-shop-54b33',
+    databaseURL: 'https://online-shop-54b33-default-rtdb.firebaseio.com',
+    storageBucket: 'online-shop-54b33.appspot.com',
     iosBundleId: 'com.example.onlineShop',
   );
 

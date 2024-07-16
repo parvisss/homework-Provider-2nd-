@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:online_shop/controllers/productc_controller.dart';
-import 'package:online_shop/views/widgets/card_builder.dart';
-import 'package:online_shop/views/widgets/cards_to_slide.dart';
-import 'package:online_shop/views/widgets/floating_button.dart';
+import 'package:online_shop/ui/widgets/card_builder.dart';
+import 'package:online_shop/ui/widgets/cards_to_slide.dart';
+import 'package:online_shop/ui/widgets/floating_button.dart';
 
-class HomeScreen extends StatefulWidget {
-  HomeScreen({super.key});
+class CardScreen extends StatefulWidget {
+  const CardScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<CardScreen> createState() => _CardState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _CardState extends State<CardScreen> {
   final productcController = ProductcController();
   @override
   Widget build(BuildContext context) {
@@ -86,7 +86,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     "Have 24 proucts",
                     style: TextStyle(fontSize: 18),
                   ),
-                  trailing: Text("data"),
                 ),
               ),
               const SliverToBoxAdapter(

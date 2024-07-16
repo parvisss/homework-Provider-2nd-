@@ -1,54 +1,41 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:online_shop/controllers/card_controller.dart';
-import 'package:online_shop/controllers/productc_controller.dart';
+import 'package:online_shop/core/main_app.dart';
 import 'package:online_shop/firebase_options.dart';
-import 'package:online_shop/views/screens/home_screen.dart';
-import 'package:online_shop/views/screens/login_screen.dart';
-import 'package:provider/provider.dart';
+import 'package:online_shop/logic/cubits/shop/product_cubit.dart';
+import 'package:online_shop/repositories/product_repository.dart';
+import 'package:online_shop/services/products_firebase_services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MainApp());
+  runApp(const App());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class App extends StatelessWidget {
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(100, 300),
-      child: MultiProvider(
+      child: MultiRepositoryProvider(
         providers: [
-          ChangeNotifierProvider(
-            create: (context) {
-              return ProductcController();
-            },
-          ),
-          ChangeNotifierProvider(
-            create: (context) {
-              return CardController();
-            },
-          )
+          RepositoryProvider(create: (ctx) {
+            return ProductRepository(ProductsFirebaseServices());
+          })
         ],
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: StreamBuilder(
-            stream: FirebaseAuth.instance.authStateChanges(),
-            builder: (ctx, snapshot) {
-              if (snapshot.hasData) {
-                return HomeScreen();
-              }
-
-              return const LoginScreen();
-            },
-          ),
+        child: MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (ctx) {
+              return ProductCubit(ctx.read<ProductRepository>());
+            })
+          ],
+          child: const MainApp(),
         ),
       ),
     );

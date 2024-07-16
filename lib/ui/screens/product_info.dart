@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:online_shop/views/widgets/floating_button.dart';
-import 'package:online_shop/views/widgets/model_bottom_sheet.dart';
+import 'package:online_shop/ui/widgets/floating_button.dart';
+import 'package:online_shop/ui/widgets/model_bottom_sheet.dart';
 
 class ProductInfo extends StatefulWidget {
   const ProductInfo({super.key, required this.id, required this.products});
@@ -156,7 +156,7 @@ class _ProductInfoState extends State<ProductInfo> {
             ),
           ),
           const Gap(20),
-           FloatingButton()
+          const FloatingButton()
         ],
       ),
     );

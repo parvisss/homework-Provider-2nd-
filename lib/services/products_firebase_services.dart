@@ -12,16 +12,39 @@ class ProductsFirebaseServices {
 
   Future<void> addProduct(double price, String title, File file) async {
     final imageUrl = await _firebaseStorageService.uploadFile(title, file);
-    await _firebaseFirestore.add(
-      {
-        "about": "about this product",
-        "aboutTitle": "This is gazal",
-        "category": "Category",
-        "image": imageUrl,
-        "isFav": false,
-        "price": price,
-        "title": title,
-      },
-    );
+
+    final product = {
+      "about": "about this product",
+      "aboutTitle": "This is gazal",
+      "category": "Category",
+      "image": imageUrl,
+      "isFav": false,
+      "price": price,
+      "title": title,
+    };
+
+    DocumentReference docRef = await _firebaseFirestore.add(product);
+
+    final updatedProduct = {
+      "id": docRef.id,
+      "about": "about this product",
+      "aboutTitle": "This is gazal",
+      "category": "Category",
+      "image": imageUrl,
+      "isFav": false,
+      "price": price,
+      "title": title,
+    };
+    print(docRef.id.toString());
+
+    await _firebaseFirestore.doc(docRef.id.toString()).update(updatedProduct);
+  }
+
+  Future<void> deleteProduct(String id) async {
+    try {
+      await _firebaseFirestore.doc(id).delete();
+    } catch (e) {
+      print(e);
+    }
   }
 }

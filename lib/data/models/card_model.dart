@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:online_shop/models/product.dart';
+import 'package:online_shop/data/models/product.dart';
 
 class CardModel extends ChangeNotifier {
   Product product;
   int amount;
   double totalPrice;
-  int id;
+  int id; 
 
   CardModel({
     required this.id,

@@ -15,3 +15,4 @@ class ProductcController extends ChangeNotifier {
     await _productsFirebaseServices.addProduct(price, title, file);
   }
 }
+  

@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:online_shop/views/screens/special_offers.dart';
+import 'package:online_shop/ui/screens/special_offers.dart';
 
 class CardsToSlide extends StatelessWidget {
   const CardsToSlide({super.key,required this.products});

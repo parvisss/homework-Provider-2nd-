@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:online_shop/views/screens/product_info.dart';
+import 'package:online_shop/ui/screens/product_info.dart';
 
 class CardBuilder extends StatelessWidget {
   const CardBuilder({super.key, required this.products});
@@ -65,6 +65,7 @@ class CardBuilder extends StatelessWidget {
                   ),
                 );
               },
+              onLongPress: ()async{},
             ),
             Positioned(
               top: -40,

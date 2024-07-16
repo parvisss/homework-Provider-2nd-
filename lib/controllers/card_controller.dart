@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:online_shop/models/card_model.dart';
+import 'package:online_shop/data/models/card_model.dart';
 
 class CardController extends ChangeNotifier {
   final List<CardModel> _cart = [];
